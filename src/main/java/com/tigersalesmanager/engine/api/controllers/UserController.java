@@ -2,6 +2,8 @@ package com.tigersalesmanager.engine.api.controllers;
 
 import com.tigersalesmanager.engine.api.dto.UserRequestDTO;
 import com.tigersalesmanager.engine.api.dto.UserResponseDTO;
+import com.tigersalesmanager.engine.domain.UserDomain;
+import com.tigersalesmanager.engine.mappers.UserMapper;
 import com.tigersalesmanager.engine.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,19 +16,25 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final UserMapper userMapper;
 
     @PostMapping
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserRequestDTO userDTO) {
-        return ResponseEntity.ok(userService.createUser(userDTO));
+        UserDomain domain = userMapper.toDomain(userDTO);
+        UserDomain created = userService.createUser(domain);
+        return ResponseEntity.ok(userMapper.toResponseDTO(created));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @RequestBody UserRequestDTO userDTO) {
-        return ResponseEntity.ok(userService.updateUser(id, userDTO));
+        UserDomain domain = userMapper.toDomain(userDTO);
+        UserDomain updated = userService.updateUser(id, domain);
+        return ResponseEntity.ok(userMapper.toResponseDTO(updated));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> getUser(@PathVariable UUID id) {
-        return ResponseEntity.ok(userService.getUser(id));
+        UserDomain domain = userService.getUser(id);
+        return ResponseEntity.ok(userMapper.toResponseDTO(domain));
     }
 }

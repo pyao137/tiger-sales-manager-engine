@@ -4,8 +4,8 @@ import com.tigersalesmanager.engine.data.model.Business;
 import com.tigersalesmanager.engine.data.model.User;
 import com.tigersalesmanager.engine.data.repo.BusinessRepository;
 import com.tigersalesmanager.engine.data.repo.UserRepository;
-import com.tigersalesmanager.engine.api.dto.BusinessRequestDTO;
-import com.tigersalesmanager.engine.api.dto.BusinessResponseDTO;
+import com.tigersalesmanager.engine.domain.BusinessDomain;
+import com.tigersalesmanager.engine.mappers.BusinessMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -17,53 +17,45 @@ import java.util.stream.Collectors;
 public class BusinessService {
     private final BusinessRepository businessRepository;
     private final UserRepository userRepository;
+    private final BusinessMapper businessMapper;
 
-    public BusinessResponseDTO createBusiness(BusinessRequestDTO businessDTO) {
-        User owner = userRepository.findById(businessDTO.getOwnerId())
+    public BusinessDomain createBusiness(BusinessDomain businessDomain) {
+        User owner = userRepository.findById(businessDomain.getOwner().getId())
                 .orElseThrow(() -> new RuntimeException("Owner not found"));
-        
+
         Business business = Business.builder()
-                .name(businessDTO.getName())
-                .taxId(businessDTO.getTaxId())
+                .name(businessDomain.getName())
+                .taxId(businessDomain.getTaxId())
                 .owner(owner)
                 .build();
-        
+
         business = businessRepository.save(business);
-        return mapToDTO(business);
+        return businessMapper.toDomain(business);
     }
 
-    public BusinessResponseDTO updateBusiness(UUID id, BusinessRequestDTO businessDTO) {
+    public BusinessDomain updateBusiness(UUID id, BusinessDomain businessDomain) {
         Business business = businessRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Business not found"));
-        
-        business.setName(businessDTO.getName());
-        business.setTaxId(businessDTO.getTaxId());
-        
+
+        business.setName(businessDomain.getName());
+        business.setTaxId(businessDomain.getTaxId());
+
         business = businessRepository.save(business);
-        return mapToDTO(business);
+        return businessMapper.toDomain(business);
     }
 
-    public List<BusinessResponseDTO> listBusinessesByUser(UUID ownerId) {
+    public List<BusinessDomain> listBusinessesByUser(UUID ownerId) {
         User owner = userRepository.findById(ownerId)
                 .orElseThrow(() -> new RuntimeException("Owner not found"));
-        
+
         return businessRepository.findByOwner(owner).stream()
-                .map(this::mapToDTO)
+                .map(businessMapper::toDomain)
                 .collect(Collectors.toList());
     }
 
-    public BusinessResponseDTO getBusiness(UUID id) {
+    public BusinessDomain getBusiness(UUID id) {
         Business business = businessRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Business not found"));
-        return mapToDTO(business);
-    }
-
-    private BusinessResponseDTO mapToDTO(Business business) {
-        return BusinessResponseDTO.builder()
-                .id(business.getId())
-                .name(business.getName())
-                .taxId(business.getTaxId())
-                .ownerId(business.getOwner().getId())
-                .build();
+        return businessMapper.toDomain(business);
     }
 }
