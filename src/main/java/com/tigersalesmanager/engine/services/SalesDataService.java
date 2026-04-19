@@ -1,11 +1,11 @@
 package com.tigersalesmanager.engine.services;
 
-import com.tigersalesmanager.engine.datamodel.Business;
-import com.tigersalesmanager.engine.datamodel.SalesData;
-import com.tigersalesmanager.engine.datarepo.BusinessRepository;
-import com.tigersalesmanager.engine.datarepo.SalesDataRepository;
-import com.tigersalesmanager.engine.dto.SalesDataRequestDTO;
-import com.tigersalesmanager.engine.dto.SalesDataResponseDTO;
+import com.tigersalesmanager.engine.data.model.Business;
+import com.tigersalesmanager.engine.data.model.SalesData;
+import com.tigersalesmanager.engine.data.repo.BusinessRepository;
+import com.tigersalesmanager.engine.data.repo.SalesDataRepository;
+import com.tigersalesmanager.engine.api.dto.SalesDataRequestDTO;
+import com.tigersalesmanager.engine.api.dto.SalesDataResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;

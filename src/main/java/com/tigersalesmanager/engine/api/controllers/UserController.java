@@ -1,7 +1,7 @@
-package com.tigersalesmanager.engine.controllers;
+package com.tigersalesmanager.engine.api.controllers;
 
-import com.tigersalesmanager.engine.dto.UserRequestDTO;
-import com.tigersalesmanager.engine.dto.UserResponseDTO;
+import com.tigersalesmanager.engine.api.dto.UserRequestDTO;
+import com.tigersalesmanager.engine.api.dto.UserResponseDTO;
 import com.tigersalesmanager.engine.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

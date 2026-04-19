@@ -1,4 +1,4 @@
-package com.tigersalesmanager.engine.dto;
+package com.tigersalesmanager.engine.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,8 +10,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BusinessResponseDTO {
-    private UUID id;
+public class BusinessRequestDTO {
     private String name;
     private String taxId;
     private UUID ownerId;

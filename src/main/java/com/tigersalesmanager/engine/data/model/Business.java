@@ -1,4 +1,4 @@
-package com.tigersalesmanager.engine.datamodel;
+package com.tigersalesmanager.engine.data.model;
 
 import jakarta.persistence.*;
 import lombok.*;

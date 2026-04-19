@@ -1,4 +1,4 @@
-package com.tigersalesmanager.engine.dto;
+package com.tigersalesmanager.engine.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +11,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SalesDataResponseDTO {
-    private UUID id;
+public class SalesDataRequestDTO {
     private UUID businessId;
     private Integer year;
     private Integer month;

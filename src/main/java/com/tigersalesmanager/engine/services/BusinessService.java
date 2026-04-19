@@ -1,11 +1,11 @@
 package com.tigersalesmanager.engine.services;
 
-import com.tigersalesmanager.engine.datamodel.Business;
-import com.tigersalesmanager.engine.datamodel.User;
-import com.tigersalesmanager.engine.datarepo.BusinessRepository;
-import com.tigersalesmanager.engine.datarepo.UserRepository;
-import com.tigersalesmanager.engine.dto.BusinessRequestDTO;
-import com.tigersalesmanager.engine.dto.BusinessResponseDTO;
+import com.tigersalesmanager.engine.data.model.Business;
+import com.tigersalesmanager.engine.data.model.User;
+import com.tigersalesmanager.engine.data.repo.BusinessRepository;
+import com.tigersalesmanager.engine.data.repo.UserRepository;
+import com.tigersalesmanager.engine.api.dto.BusinessRequestDTO;
+import com.tigersalesmanager.engine.api.dto.BusinessResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;

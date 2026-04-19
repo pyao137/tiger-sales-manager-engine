@@ -1,9 +1,9 @@
 package com.tigersalesmanager.engine.services;
 
-import com.tigersalesmanager.engine.datamodel.User;
-import com.tigersalesmanager.engine.datarepo.UserRepository;
-import com.tigersalesmanager.engine.dto.UserRequestDTO;
-import com.tigersalesmanager.engine.dto.UserResponseDTO;
+import com.tigersalesmanager.engine.data.model.User;
+import com.tigersalesmanager.engine.data.repo.UserRepository;
+import com.tigersalesmanager.engine.api.dto.UserRequestDTO;
+import com.tigersalesmanager.engine.api.dto.UserResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.UUID;

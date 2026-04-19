@@ -1,7 +1,7 @@
-package com.tigersalesmanager.engine.controllers;
+package com.tigersalesmanager.engine.api.controllers;
 
-import com.tigersalesmanager.engine.dto.SalesDataRequestDTO;
-import com.tigersalesmanager.engine.dto.SalesDataResponseDTO;
+import com.tigersalesmanager.engine.api.dto.SalesDataRequestDTO;
+import com.tigersalesmanager.engine.api.dto.SalesDataResponseDTO;
 import com.tigersalesmanager.engine.services.SalesDataService;
 import com.tigersalesmanager.engine.services.TaxFilingService;
 import lombok.RequiredArgsConstructor;
