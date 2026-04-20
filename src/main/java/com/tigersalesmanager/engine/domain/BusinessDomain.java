@@ -14,5 +14,4 @@ public class BusinessDomain {
     private String name;
     private String taxId;
     private UserDomain owner;
-    private List<SalesDataDomain> salesData;
 }

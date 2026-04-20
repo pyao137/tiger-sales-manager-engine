@@ -13,5 +13,4 @@ public class UserDomain {
     private UUID id;
     private String email;
     private String name;
-    private List<BusinessDomain> businesses;
 }
